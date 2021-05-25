@@ -1,0 +1,410 @@
+
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0" name="viewport">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+body{
+margin:0;
+padding:0;
+width:100%;
+height:100%;
+background-color:#00000D;
+}
+
+
+
+#div1{
+margin:0;
+width:100%;
+height:500px;
+background-color:transparent;
+}
+#h1{
+margin:0;
+padding:20px 0;
+top:160px;
+width:100%;
+background-image:linear-gradient(180deg,#00FF6E,transparent,#FF0010);
+color:#25FFC7;
+font-size:30px;
+text-align-last:center;
+text-shadow:
+0 0 16px #25FFC7,
+0 0 16px red;
+text-transform:uppercase;
+}
+#div2{
+margin:0 18px;
+position:relative;
+width:320px;
+height:320px;
+overflow:hidden;
+border:2px solid #fff;
+}
+#div3{
+margin:0 18px;
+padding:0;
+position:relative;
+width:320px;
+height:170px;
+border:2px solid #fff;
+}
+
+
+
+
+.btn1,.btn2{
+margin:0;
+padding:0;
+position:absolute;
+display:inline-block;
+width:150px;
+height:150px;
+/*box-shadow:0 0 20px 1px #25FFC7;*/
+}
+
+.btn1{
+padding:50px 20px;
+top:0px;left:0px;
+background-color:red;
+border-radius:50px 0 50% 0;
+}
+
+.btn2{
+top:0px;right:0px;
+background-color:#DE55C0;
+border-radius:0 50px 0 50%;
+}
+
+
+
+.btn1:hover,.btn2:hover{
+transition:0.8s;
+transform:perspective(200px) rotateX(360deg);
+}
+
+
+.p1{
+margin:4px 4px;
+padding:4px 4px;
+color:#00FF07;
+border:2px solid #0400FFAD;
+text-align:center;
+font-size:20px;
+text-transform:uppercase;
+}
+
+.player{
+animation:playerx 0.7s steps(3) infinite;
+}
+@keyframes playerx{
+0%{background:#000;}
+100%{background:#fff;}
+}
+
+#win{
+margin:0;
+padding:0;
+width:360px;
+height:500px;
+background-image:linear-gradient(90deg,#FF00009E,#0400FFAD);
+box-shadow:0 0 20px 1px #25FFC7;
+}
+.p2{
+font-size:50px;
+color:#fff;
+text-transform:uppercase;
+}
+
+
+</style>
+<title>fanlly game is ready</title>
+</head>
+<body>
+
+<div id="mdiv">
+
+<div id="div1">
+<div id="div2">
+<div class="player xx"></div>
+<div class="eny enemy1"></div>
+<div class="eny enemy2"></div>
+<div class="eny enemy3"></div>
+<div class="eny enemy4"></div>
+</div>
+<div id="div3">
+<div class="btn1"></div>
+<div class="btn2"></div>
+</div>
+</div>
+
+</div>
+
+<div id="win">
+
+<p class="p2" >cgrecomff<br>booyah</p>
+
+</div>
+
+
+<script type="text/javascript">
+var bodyg,headg,mdiv,win;
+
+
+bodyg = document.body;
+headg = document.head;
+mdiv = document.getElementById('mdiv');
+win = document.getElementById('win');
+win.style.display = 'none';
+
+function game(){
+
+var p1,p2,p3,p4;
+var r,b,g,y,div1,div2,div3,div4,px;
+var cl,clk,id,tx1,tx2,tx3,tx4;
+var btn1,btn2,btn3,btn4;
+var player,eny,enemy1,enemy2,enemy3,enemy4;
+var traget,texts,socrchek;
+
+var es1,est1,est2,estt1,ps1,pst1,pst2,pstt1;
+
+
+
+
+div1 = document.getElementById('div1');
+div2 = document.getElementById('div2');
+div3 = document.getElementById('div3');
+div4 = document.getElementById('div4');
+
+
+player = document.querySelector('.player');
+
+xx = document.querySelector('.xx');
+eny = document.querySelector('.eny');
+
+enemy1 = document.querySelector('.enemy1');
+enemy2 = document.querySelector('.enemy2');
+enemy3 = document.querySelector('.enemy3');
+enemy4 = document.querySelector('.enemy4');
+
+
+btn1 = document.querySelector('.btn1');
+btn2 = document.querySelector('.btn2');
+//btn3 = document.querySelector('.btn3');
+//btn4 = document.querySelector('.btn4');
+
+
+
+
+px = "px";
+r = "red";
+b = "blue";
+g = "green";
+y = "#FFE400";
+id ="id";
+cl ="class";
+clk = "click";
+
+
+
+var pw,ph,enyw,enyh;
+pw =40;
+ph =40;
+enyw =40;
+enyh =40;
+
+player.style.width=pw;
+player.style.height=ph;
+
+enemy1.style.width=enyw;
+enemy1.style.height=enyh;
+enemy1.style.backgroundColor="#0F00A2";
+
+enemy2.style.width=enyw;
+enemy2.style.height=enyh;
+enemy2.style.backgroundColor="#7700FF";
+
+enemy3.style.width=enyw;
+enemy3.style.height=enyh;
+enemy3.style.backgroundColor="#FF9E00";
+
+enemy4.style.width=enyw;
+enemy4.style.height=enyh;
+enemy4.style.backgroundColor="#FF0093";
+
+
+function play(){
+pst1 ='.player{margin:0;padding:0;position:absolute;transition:0.8s;}';
+pst2 ='.player:hover{transition:0.8s;background:#FF0600;}';
+pstt1 = document.createTextNode(pst1 + pst2);
+ps1 = document.createElement('style');
+ps1.appendChild(pstt1);
+headg.appendChild(ps1);
+}
+play();
+
+function playran(){
+
+var pll,plt,tops,lefts;
+
+
+var ggg = setInterval(function(){
+
+player.addEventListener('animationiteration', function(){
+var random5 = Math.floor(Math.random() * 8 + 0);
+tops = random5 * 40;
+player.style.top = tops + "px";
+});
+
+
+xx.addEventListener('animationiteration', function(){
+var random6 = Math.floor(Math.random() * 8 + 0);
+lefts = random6 * 40;
+xx.style.left =lefts + "px";
+});
+
+
+}, 1000);
+
+}
+playran();
+
+
+function socra(){
+
+var socr,rsocr;
+
+
+
+rsocr = Math.floor(Math.random() * 100 + 10);
+
+socr =0;
+
+player.addEventListener(clk, function(){
+socr++
+if(socr === rsocr){
+alert('Boohya -: ' + socr);
+mdiv.style.display="none";
+win.style.display = 'block';
+}
+});
+
+
+btn2.addEventListener(clk, function(){
+alert('your cerrnt socr- ' + socr);
+
+});
+
+traget = document.createElement('p');
+traget.setAttribute(cl, 'p1');
+texts = document.createTextNode(rsocr);
+traget.appendChild(texts);
+btn1.appendChild(traget);
+
+}
+socra();
+
+
+
+function enemys(){
+est1 ='.eny{margin:0;padding:0;position:absolute;background:#00E4FF;}' + '.enemy1{animation:enemy1 1.5s linear infinite;}.enemy2{animation:enemy2 1.5s linear infinite;}.enemy3{animation:enemy3 1.5s linear infinite;}.enemy4{animation:enemy4 1.5s linear infinite;}';
+est2 ='@keyframes enemy1{0%{transition:1.5s;left:-40px;}100%{transition:1.5s;left:320px;}}' + '@keyframes enemy2{0%{transition:1.5s;right:-40px;}100%{transition:1.5s;right:320px;}}' + '@keyframes enemy3{0%{transition:1.5s;top:-40px;}100%{transition:1.5s;top:540px;}}' + '@keyframes enemy4{0%{transition:1.5s;bottom:-40px;}100%{transition:1.5s;bottom:540px;}}';
+estt1 = document.createTextNode(est1 + est2);
+es1 = document.createElement('style');
+es1.appendChild(estt1);
+headg.appendChild(es1);
+}
+
+enemys();
+
+function runenemy(){
+var top,left;
+
+enemy1.addEventListener('animationiteration', function(){
+var random1 = Math.floor(Math.random() * 8 + 0);
+top = random1 * 40;
+enemy1.style.top = top + "px";
+});
+
+enemy2.addEventListener('animationiteration', function(){
+var random2 = Math.floor(Math.random() * 8 + 0);
+top = random2 * 40;
+enemy2.style.top = top + "px";
+});
+
+enemy3.addEventListener('animationiteration', function(){
+var random3 = Math.floor(Math.random() * 8 + 0);
+left = random3 * 40;
+enemy3.style.left = left + "px";
+});
+
+enemy4.addEventListener('animationiteration', function(){
+var random4 = Math.floor(Math.random() * 8 + 0);
+left = random4 * 40;
+enemy4.style.left = left + "px";
+});
+
+var tata = 'looger dont click enemys ';
+
+enemy1.addEventListener(clk, function(){
+for(var i=0;i<=5;i++){alert(tata);}
+});
+
+enemy2.addEventListener(clk, function(){
+for(var i=0;i<=5;i++){alert(tata);}
+});
+
+enemy3.addEventListener(clk, function(){
+for(var i=0;i<=5;i++){alert(tata);}
+});
+
+enemy4.addEventListener(clk, function(){
+for(var i=0;i<=5;i++){alert(tata);}
+});
+
+
+
+
+
+
+
+
+
+}
+runenemy();
+
+}
+
+
+var h1,h1t;
+h1 = document.createElement('h1');
+h1.setAttribute('id', 'h1');
+h1t =document.createTextNode('Tap Hair To Play');
+h1.appendChild(h1t);
+mdiv.appendChild(h1);
+h1.style.position="absolute";
+h1.addEventListener('click', function(){
+h1.style.display='none';
+game();
+});
+
+
+console.log(6 > 9);
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
